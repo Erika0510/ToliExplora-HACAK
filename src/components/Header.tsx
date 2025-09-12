@@ -2,10 +2,19 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Globe, Menu, X } from 'lucide-react';
+import { useAuth } from '@/contexts/AuthContext';
+import { Globe, Menu, X, LogOut, User } from 'lucide-react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 const Header = () => {
   const { t, language, setLanguage } = useLanguage();
+  const { user, profile, signOut } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -31,7 +40,7 @@ const Header = () => {
             <div className="w-8 h-8 bg-gradient-hero rounded-lg flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-lg">T</span>
             </div>
-            <span className="font-bold text-xl text-primary">Tolima Travel Hub</span>
+            <span className="font-bold text-xl text-primary">ToliExplora</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -51,8 +60,50 @@ const Header = () => {
             ))}
           </div>
 
-          {/* Language Toggle & Mobile Menu */}
+          {/* Auth & Language & Mobile Menu */}
           <div className="flex items-center space-x-4">
+            {user ? (
+              <>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="sm" className="flex items-center space-x-2">
+                      <User className="h-4 w-4" />
+                      <span className="hidden md:inline text-sm font-medium">
+                        {profile?.full_name || user.email}
+                      </span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuItem className="font-medium">
+                      {profile?.full_name}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="text-sm text-muted-foreground">
+                      {profile?.user_type}
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    {profile?.user_type === 'Empresario' && (
+                      <DropdownMenuItem asChild>
+                        <Link to="/business">Panel Empresarial</Link>
+                      </DropdownMenuItem>
+                    )}
+                    <DropdownMenuItem onClick={() => signOut()}>
+                      <LogOut className="mr-2 h-4 w-4" />
+                      Cerrar Sesión
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </>
+            ) : (
+              <div className="flex items-center space-x-2">
+                <Button variant="ghost" size="sm" asChild>
+                  <Link to="/auth">Iniciar Sesión</Link>
+                </Button>
+                <Button variant="default" size="sm" asChild>
+                  <Link to="/auth">Registrarse</Link>
+                </Button>
+              </div>
+            )}
+
             <Button
               variant="ghost"
               size="sm"
