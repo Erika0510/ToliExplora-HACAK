@@ -4,7 +4,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+<<<<<<< HEAD
       "@/*": ["../src/*"]
+=======
+      "@/*": ["./src/*"]
+>>>>>>> 34ff906453843f78100a6a0a1271c6cf73441c9e
     },
     "noImplicitAny": false,
     "noUnusedParameters": false,
