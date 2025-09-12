@@ -14,6 +14,7 @@ import Auth from "./pages/Auth";
 import BusinessDashboard from "./pages/BusinessDashboard";
 import { useEffect } from "react";
 
+
 const queryClient = new QueryClient();
 
 const AuthenticatedApp = () => {

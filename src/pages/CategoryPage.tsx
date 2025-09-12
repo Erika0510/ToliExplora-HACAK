@@ -20,12 +20,6 @@ const CategoryPage = () => {
         return Mountain;
       case 'gastronomy':
         return UtensilsCrossed;
-      //case 'towns':
-       // return Building;
-      //case 'waterfalls':
-       // return Waves;
-      //default:
-       // return Mountain;
     }
   };
 

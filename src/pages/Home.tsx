@@ -3,15 +3,33 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Calendar, MapPin, UtensilsCrossed, Mountain, Waves, Building } from 'lucide-react';
-import tolimaHero from '@/assets/tolima-hero.jpg';
+import { useState, useEffect } from "react";
 import festivalCard from '@/assets/festival-card.jpg';
 import hikingCard from '@/assets/hiking-card.jpg';
 import gastronomyCard from '@/assets/gastronomy-card.jpg';
 import townsCard from '@/assets/towns-card.jpg';
 import waterfallsCard from '@/assets/waterfalls-card.jpg';
 
+// Carrusel: imágenes para el hero
+const TOLIMA_IMAGES = [
+  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+];
+
 const Home = () => {
   const { t } = useLanguage();
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % TOLIMA_IMAGES.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const categories = [
     {
@@ -38,55 +56,61 @@ const Home = () => {
       icon: UtensilsCrossed,
       gradient: 'from-secondary to-secondary-light'
     },
-    /*
-    {
-      title: t('category.towns.title'),
-      description: t('category.towns.description'),
-      href: '/towns',
-      image: townsCard,
-      icon: Building,
-      gradient: 'from-accent to-primary'
-    },
-    {
-      title: t('category.waterfalls.title'),
-      description: t('category.waterfalls.description'),
-      href: '/waterfalls',
-      image: waterfallsCard,
-      icon: Waves,
-      gradient: 'from-secondary to-primary'
-    }
-      */
   ];
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
+      {/* Carrusel Hero */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${tolimaHero})` }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/60 to-transparent"></div>
+        {/* Fondo dinámico */}
+        <div className="absolute inset-0">
+          {TOLIMA_IMAGES.map((image, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentImage ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <img
+                src={image}
+                alt={`Paisaje del Tolima ${index + 1}`}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/40" />
+            </div>
+          ))}
         </div>
-        
-        <div className="relative z-10 text-center text-primary-foreground max-w-4xl mx-auto px-4">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg">
+
+        {/* Texto encima del carrusel */}
+        <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-2xl">
             {t('home.title')}
           </h1>
-          <p className="text-xl md:text-2xl mb-8 drop-shadow-md font-light">
+          <p className="text-xl md:text-2xl mb-8 text-white/90 drop-shadow-lg max-w-2xl mx-auto">
             {t('home.subtitle')}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" size="lg" className="text-lg px-8">
-              {t('home.explore')}
-            </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 bg-background/20 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-primary">
-              {t('common.read_more')}
-            </Button>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          </div>
+
+          {/* Indicadores del carrusel */}
+          <div className="flex justify-center space-x-2 mt-12">
+            {TOLIMA_IMAGES.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentImage(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentImage
+                    ? "bg-primary scale-125"
+                    : "bg-white/50 hover:bg-white/75"
+                }`}
+              />
+            ))}
           </div>
         </div>
       </section>
 
+      {/* Aquí sigue el resto de secciones */}
       {/* History Section */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
@@ -159,7 +183,7 @@ const Home = () => {
             ¿Listo para tu próxima aventura?
           </h2>
           <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-            Descubre lugares únicos, vive experiencias auténticSas y crea recuerdos inolvidables en el corazón de Colombia.
+            Descubre lugares únicos, vive experiencias auténticas y crea recuerdos inolvidables en el corazón de Colombia.
           </p>
           <Button variant="accent" size="lg" className="text-lg px-8">
             Comenzar exploración
