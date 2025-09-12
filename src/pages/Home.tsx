@@ -38,6 +38,7 @@ const Home = () => {
       icon: UtensilsCrossed,
       gradient: 'from-secondary to-secondary-light'
     },
+    /*
     {
       title: t('category.towns.title'),
       description: t('category.towns.description'),
@@ -54,6 +55,7 @@ const Home = () => {
       icon: Waves,
       gradient: 'from-secondary to-primary'
     }
+      */
   ];
 
   return (
