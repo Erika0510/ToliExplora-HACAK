@@ -50,11 +50,8 @@ const AuthenticatedApp = () => {
             : <Navigate to="/auth" replace />
         } />
         <Route path="/" element={<Home />} />
-        <Route path="/festivals" element={<CategoryPage />} />
-        <Route path="/hiking" element={<CategoryPage />} />
-        <Route path="/gastronomy" element={<CategoryPage />} />
-        <Route path="/towns" element={<CategoryPage />} />
-        <Route path="/waterfalls" element={<CategoryPage />} />
+        <Route path="/:category" element={<CategoryPage />} />
+
         <Route path="/:category/:id" element={<PlaceDetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

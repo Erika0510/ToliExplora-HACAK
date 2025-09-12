@@ -1,10 +1,13 @@
+// ---------------------------
+// 1. Interfaces
+// ---------------------------
 export interface Place {
   id: string;
   name: string;
   description: string;
   image: string;
   category: string;
-  availability: 'available' | 'limited' | 'unavailable';
+  availability: "available" | "limited" | "unavailable";
   rating?: number;
   location: string;
   fullDescription: string;
@@ -22,145 +25,450 @@ export interface Review {
   photos?: string[];
 }
 
-import festivalCard from '@/assets/festival-card.jpg';
-import hikingCard from '@/assets/hiking-card.jpg';
-import gastronomyCard from '@/assets/gastronomy-card.jpg';
-import townsCard from '@/assets/towns-card.jpg';
-import waterfallsCard from '@/assets/waterfalls-card.jpg';
-
+// ---------------------------
+// 2. Lugares con imágenes únicas
+// ---------------------------
 export const places: Place[] = [
-  // Festivals
+  // ---------------------------
+  // FESTIVALES (10)
+  // ---------------------------
   {
-    id: 'festival-san-juan-ibague',
-    name: 'Festival Folclórico Colombiano',
-    description: 'El festival más importante de música folclórica de Colombia, celebrado cada año en Ibagué.',
-    image: festivalCard,
-    category: 'festivals',
-    availability: 'available',
-    rating: 4.8,
-    location: 'Ibagué, Tolima',
-    fullDescription: 'El Festival Folclórico Colombiano es una celebración anual que reúne lo mejor de la música tradicional colombiana. Durante una semana, Ibagué se convierte en el epicentro cultural del país.',
-    history: 'Fundado en 1959, este festival ha sido la plataforma de lanzamiento de grandes artistas folclóricos colombianos. Con más de 60 años de historia, se ha consolidado como el evento cultural más importante del Tolima.',
-    reviews: [
-      {
-        id: '1',
-        author: 'María González',
-        rating: 5,
-        comment: 'Una experiencia cultural increíble. La música, los bailes y el ambiente son únicos.',
-        date: '2024-06-15'
-      },
-      {
-        id: '2',
-        author: 'Carlos Rodríguez',
-        rating: 4,
-        comment: 'Excelente organización y gran variedad de artistas. Muy recomendado.',
-        date: '2024-06-10'
-      }
-    ],
-    gallery: [festivalCard]
-  },
-  
-  // Hiking
-  {
-    id: 'nevado-tolima',
-    name: 'Nevado del Tolima',
-    description: 'Ascenso al volcán nevado más alto del departamento, una experiencia única para montañistas.',
-    image: hikingCard,
-    category: 'hiking',
-    availability: 'limited',
+    id: "festival-folclorico",
+    name: "Festival Folclórico Colombiano",
+    description: "La celebración más grande de música y danza tradicional en Ibagué.",
+    image: "https://images.unsplash.com/photo-1487180144351-b8472da7d491?w=800&h=600&fit=crop",
+    category: "festivals",
+    availability: "available",
     rating: 4.9,
-    location: 'Parque Nacional Los Nevados',
-    fullDescription: 'El Nevado del Tolima es un estratovolcán que alcanza los 5,215 metros de altura. Es considerado uno de los ascensos más desafiantes y hermosos de Colombia.',
-    history: 'Este majestuoso volcán ha sido sagrado para las culturas indígenas de la región. Su nombre proviene de la palabra "Ibanasca" que significa "pueblo de nieves" en lengua pijao.',
-    reviews: [
-      {
-        id: '3',
-        author: 'Ana Martínez',
-        rating: 5,
-        comment: 'Desafío físico increíble con vistas espectaculares. Una experiencia que no olvidaré jamás.',
-        date: '2024-07-20'
-      }
-    ],
-    gallery: [hikingCard]
+    location: "Ibagué, Tolima",
+    fullDescription: "Durante junio, Ibagué se llena de música, danza y folclor colombiano.",
+    history: "Fundado en 1959, hoy es Patrimonio Cultural de la Nación.",
+    reviews: [],
+    gallery: [],
   },
-  
-  // Gastronomy
   {
-    id: 'lechona-tolimense',
-    name: 'Lechona Tolimense',
-    description: 'Degusta el plato más emblemático del Tolima en sus lugares de origen.',
-    image: gastronomyCard,
-    category: 'gastronomy',
-    availability: 'available',
+    id: "festival-lechona",
+    name: "Festival de la Lechona",
+    description: "Homenaje al plato más representativo del Tolima.",
+    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=800&h=600&fit=crop",
+    category: "festivals",
+    availability: "available",
     rating: 4.7,
-    location: 'Espinal, Tolima',
-    fullDescription: 'La lechona tolimense es un plato tradicional que consiste en un cerdo relleno de arroz, carne, arveja y especias, cocinado lentamente en horno de leña.',
-    history: 'Este plato tiene sus raíces en la época colonial y se ha convertido en el símbolo gastronómico del Tolima. Cada familia tiene su receta secreta transmitida de generación en generación.',
-    reviews: [
-      {
-        id: '4',
-        author: 'Pedro Hernández',
-        rating: 5,
-        comment: 'La mejor lechona que he probado en mi vida. Sabor auténtico y tradicional.',
-        date: '2024-08-05'
-      }
-    ],
-    gallery: [gastronomyCard]
+    location: "Espinal, Tolima",
+    fullDescription: "Cada junio, Espinal rinde tributo a la lechona con desfiles y concursos.",
+    history: "Nació como iniciativa de cocineras tradicionales.",
+    reviews: [],
+    gallery: [],
   },
-  
-  // Towns
   {
-    id: 'honda-tolima',
-    name: 'Villa de San Bartolomé de Honda',
-    description: 'Pueblo colonial histórico conocido como la "Ciudad de los Puentes".',
-    image: townsCard,
-    category: 'towns',
-    availability: 'available',
-    rating: 4.6,
-    location: 'Honda, Tolima',
-    fullDescription: 'Honda es un municipio histórico fundado en 1539, famoso por su arquitectura colonial y sus múltiples puentes sobre el río Magdalena.',
-    history: 'Durante la época colonial, Honda fue un puerto fluvial de gran importancia en la ruta hacia el interior del país. Su arquitectura colonial se conserva hasta hoy como testimonio de su pasado glorioso.',
-    reviews: [
-      {
-        id: '5',
-        author: 'Sofía Ramírez',
-        rating: 4,
-        comment: 'Hermoso pueblo colonial con mucha historia. Los puentes son impresionantes.',
-        date: '2024-07-30'
-      }
-    ],
-    gallery: [townsCard]
-  },
-  
-  // Waterfalls
-  {
-    id: 'cascada-del-eden',
-    name: 'Cascada del Edén',
-    description: 'Una impresionante caída de agua de 70 metros rodeada de vegetación exuberante.',
-    image: waterfallsCard,
-    category: 'waterfalls',
-    availability: 'available',
+    id: "feria-cafe",
+    name: "Feria Nacional del Café",
+    description: "Celebración del café tolimense con concursos y catas.",
+    image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&h=600&fit=crop",
+    category: "festivals",
+    availability: "available",
     rating: 4.8,
-    location: 'Chaparral, Tolima',
-    fullDescription: 'La Cascada del Edén es una formación natural espectacular donde el agua cae desde una altura de 70 metros creando un espectáculo natural único.',
-    history: 'Esta cascada ha sido considerada sagrada por las comunidades indígenas locales. Su acceso se abrió al público hace pocos años, convirtiéndose en un destino eco-turístico popular.',
-    reviews: [
-      {
-        id: '6',
-        author: 'Luis Torres',
-        rating: 5,
-        comment: 'Lugar mágico e impresionante. El sendero está bien marcado y la cascada es espectacular.',
-        date: '2024-08-12'
-      }
-    ],
-    gallery: [waterfallsCard]
-  }
+    location: "Líbano, Tolima",
+    fullDescription: "Reúne productores y baristas en torno al café de origen.",
+    history: "Surgió en los años 80 como vitrina cafetera.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "carnaval-magd",
+    name: "Carnaval del Río Magdalena",
+    description: "Fiesta fluvial en Honda en honor al río.",
+    image: "https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=800&h=600&fit=crop",
+    category: "festivals",
+    availability: "available",
+    rating: 4.5,
+    location: "Honda, Tolima",
+    fullDescription: "Desfiles náuticos, música y gastronomía junto al río.",
+    history: "Rememora las tradiciones de navegantes y pescadores.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "festival-bambuco",
+    name: "Encuentro Nacional de Bambuco",
+    description: "Competencia de música tradicional andina.",
+    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop",
+    category: "festivals",
+    availability: "available",
+    rating: 4.6,
+    location: "Teatro Tolima, Ibagué",
+    fullDescription: "Músicos de todo el país interpretan el bambuco andino.",
+    history: "Consolida a Ibagué como ciudad musical.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "festival-sanjuan",
+    name: "Fiestas de San Juan",
+    description: "Tradición tolimense con cabalgatas y desfiles.",
+    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=600&fit=crop",
+    category: "festivals",
+    availability: "available",
+    rating: 4.8,
+    location: "Espinal, Tolima",
+    fullDescription: "Celebración patronal y cultural con música y gastronomía.",
+    history: "Patrimonio festivo de Espinal.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "festival-sampedro",
+    name: "Fiestas de San Pedro",
+    description: "Danzas y comparsas en municipios del Tolima.",
+    image: "https://images.unsplash.com/photo-1521334884684-d80222895322?w=800&h=600&fit=crop",
+    category: "festivals",
+    availability: "available",
+    rating: 4.7,
+    location: "Natagaima, Tolima",
+    fullDescription: "Conciertos y cabalgatas para honrar a San Pedro.",
+    history: "Fiesta religiosa transformada en carnaval popular.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "festival-musical",
+    name: "Festival de Música Colombiana",
+    description: "Concurso Nacional de Duetos Príncipes de la Canción.",
+    image: "https://images.unsplash.com/photo-1449960238630-7e720e630019?w=800&h=600&fit=crop",
+    category: "festivals",
+    availability: "available",
+    rating: 4.9,
+    location: "Ibagué, Tolima",
+    fullDescription: "Reúne a los mejores intérpretes de música andina.",
+    history: "Evento insignia de la ciudad musical de Colombia.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "festival-jazz",
+    name: "Festival de Jazz",
+    description: "Espacio para los amantes del jazz y fusión musical.",
+    image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=800&h=600&fit=crop",
+    category: "festivals",
+    availability: "available",
+    rating: 4.5,
+    location: "Ibagué, Tolima",
+    fullDescription: "Artistas nacionales e internacionales presentan jazz en vivo.",
+    history: "Se ha vuelto un referente cultural en la región.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "festival-feria-artesanal",
+    name: "Feria Artesanal del Tolima",
+    description: "Exposición y venta de artesanías típicas.",
+    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&h=600&fit=crop",
+    category: "festivals",
+    availability: "available",
+    rating: 4.3,
+    location: "Ibagué, Tolima",
+    fullDescription: "Evento cultural con artistas, artesanos y música.",
+    history: "Apoya a emprendedores locales.",
+    reviews: [],
+    gallery: [],
+  },
+
+  // ---------------------------
+  // GASTRONOMÍA (10)
+  // ---------------------------
+  {
+    id: "lechona",
+    name: "Lechona Tolimense",
+    description: "El plato más emblemático del Tolima.",
+    image: "https://images.unsplash.com/photo-1604908176997-125f2d1a3d52?w=800&h=600&fit=crop",
+    category: "gastronomy",
+    availability: "available",
+    rating: 4.9,
+    location: "Espinal, Tolima",
+    fullDescription: "Cerdo relleno de arroz, arvejas y especias.",
+    history: "Receta colonial que se transmite por generaciones.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "tamales",
+    name: "Tamales Tolimenses",
+    description: "Plato típico envuelto en hoja de plátano.",
+    image: "https://images.unsplash.com/photo-1601314167093-b9fc8b5dc755?w=800&h=600&fit=crop",
+    category: "gastronomy",
+    availability: "available",
+    rating: 4.8,
+    location: "Ibagué, Tolima",
+    fullDescription: "Preparado con arroz, garbanzos, carnes y huevo.",
+    history: "Tradición en desayunos dominicales.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "cafe-memorias",
+    name: "Café & Memorias",
+    description: "Café boutique con ambiente cultural.",
+    image: "https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800&h=600&fit=crop",
+    category: "gastronomy",
+    availability: "available",
+    rating: 4.7,
+    location: "Ibagué, Tolima",
+    fullDescription: "Cada taza cuenta la historia de caficultores locales.",
+    history: "Fundado para rescatar la tradición cafetera.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "achiras",
+    name: "Achiras del Huila",
+    description: "Galletas crujientes hechas con almidón de achira.",
+    image: "https://images.unsplash.com/photo-1606755962773-5cb8e8f9a4f3?w=800&h=600&fit=crop",
+    category: "gastronomy",
+    availability: "available",
+    rating: 4.6,
+    location: "Saldaña, Tolima",
+    fullDescription: "Acompañan el café o chocolate.",
+    history: "Receta ancestral indígena.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "mazamorra",
+    name: "Mazamorra Tolimense",
+    description: "Postre típico de maíz tierno y panela.",
+    image: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800&h=600&fit=crop",
+    category: "gastronomy",
+    availability: "available",
+    rating: 4.5,
+    location: "Tolima",
+    fullDescription: "Se sirve con queso fresco y melao de panela.",
+    history: "Herencia campesina.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "empanadas",
+    name: "Empanadas Tolimenses",
+    description: "Empanadas de maíz rellenas de carne y arroz.",
+    image: "https://images.unsplash.com/photo-1625946406820-1c6a3e39fb8b?w=800&h=600&fit=crop",
+    category: "gastronomy",
+    availability: "available",
+    rating: 4.8,
+    location: "Tolima",
+    fullDescription: "Se sirven con ají picante.",
+    history: "Aperitivo tradicional en fiestas.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "arepas",
+    name: "Arepas de Maíz Pelao",
+    description: "Arepas tradicionales a la brasa.",
+    image: "https://images.unsplash.com/photo-1573140247632-f8fd74997d5c?w=800&h=600&fit=crop",
+    category: "gastronomy",
+    availability: "available",
+    rating: 4.7,
+    location: "Tolima",
+    fullDescription: "Se comen con queso y chocolate caliente.",
+    history: "Desayuno típico campesino.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "viudo",
+    name: "Viudo de Pescado",
+    description: "Plato típico con pescado de río y yuca.",
+    image: "https://images.unsplash.com/photo-1569058242345-6e98c86f963c?w=800&h=600&fit=crop",
+    category: "gastronomy",
+    availability: "available",
+    rating: 4.6,
+    location: "Honda, Tolima",
+    fullDescription: "Preparación popular a orillas del Magdalena.",
+    history: "Receta ribereña tradicional.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "aguapanela",
+    name: "Aguapanela con Queso",
+    description: "Infusión de panela acompañada de queso fresco.",
+    image: "https://images.unsplash.com/photo-1625945937341-61a8ebefb563?w=800&h=600&fit=crop",
+    category: "gastronomy",
+    availability: "available",
+    rating: 4.9,
+    location: "Tolima",
+    fullDescription: "Bebida caliente reconfortante.",
+    history: "Infaltable en casas campesinas.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "chicha",
+    name: "Chicha de Maíz",
+    description: "Bebida fermentada de maíz.",
+    image: "https://images.unsplash.com/photo-1606788075761-938753c75b67?w=800&h=600&fit=crop",
+    category: "gastronomy",
+    availability: "available",
+    rating: 4.4,
+    location: "Tolima",
+    fullDescription: "Se prepara en fiestas tradicionales.",
+    history: "Herencia indígena.",
+    reviews: [],
+    gallery: [],
+  },
+
+  // ---------------------------
+  // SENDERISMO (10)
+  // ---------------------------
+  {
+    id: "nevado-tolima",
+    name: "Nevado del Tolima",
+    description: "Montaña majestuosa y nevada del Parque Nacional Los Nevados.",
+    image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&h=600&fit=crop",
+    category: "hiking",
+    availability: "limited",
+    rating: 4.9,
+    location: "Parque Nacional Los Nevados",
+    fullDescription: "Ascenso exigente con vistas espectaculares.",
+    history: "Considerada montaña sagrada por los indígenas.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "canon-combeima",
+    name: "Cañón del Combeima",
+    description: "Valle rodeado de montañas y ríos cristalinos.",
+    image: "https://images.unsplash.com/photo-1499696010181-3eb6b6d0f543?w=800&h=600&fit=crop",
+    category: "hiking",
+    availability: "available",
+    rating: 4.7,
+    location: "Ibagué, Tolima",
+    fullDescription: "Perfecto para caminatas y observación de aves.",
+    history: "Antiguo camino de arrieros.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "cerro-machin",
+    name: "Cerro Machín",
+    description: "Volcán dormido con rutas panorámicas.",
+    image: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&h=600&fit=crop",
+    category: "hiking",
+    availability: "available",
+    rating: 4.6,
+    location: "Cajamarca, Tolima",
+    fullDescription: "Sus senderos permiten vistas de todo el valle.",
+    history: "Volcán activo muy vigilado en Colombia.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "laguna-otun",
+    name: "Laguna del Otún",
+    description: "Laguna cristalina rodeada de páramo.",
+    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop",
+    category: "hiking",
+    availability: "available",
+    rating: 4.8,
+    location: "Parque Nacional Los Nevados",
+    fullDescription: "Un espejo de agua que refleja las nubes.",
+    history: "Considerada sagrada por comunidades indígenas.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "alto-linea",
+    name: "Alto de la Línea",
+    description: "Paso montañoso icónico de la cordillera.",
+    image: "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?w=800&h=600&fit=crop",
+    category: "hiking",
+    availability: "available",
+    rating: 4.5,
+    location: "Cordillera Central",
+    fullDescription: "Punto estratégico de viajeros y arrieros.",
+    history: "Ruta histórica del comercio cafetero.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "mirador-bella-vista",
+    name: "Mirador Bella Vista",
+    description: "Sendero corto con vistas panorámicas de Ibagué.",
+    image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&h=600&fit=crop",
+    category: "hiking",
+    availability: "available",
+    rating: 4.6,
+    location: "Ibagué, Tolima",
+    fullDescription: "Perfecto para caminatas familiares.",
+    history: "Muy visitado por locales y turistas.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "cascada-silencio",
+    name: "Cascada El Silencio",
+    description: "Cascada escondida en medio del bosque.",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=600&fit=crop",
+    category: "hiking",
+    availability: "available",
+    rating: 4.7,
+    location: "Anzoátegui, Tolima",
+    fullDescription: "Acceso mediante sendero ecológico.",
+    history: "Lugar sagrado para comunidades locales.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "paramo-letras",
+    name: "Páramo de Letras",
+    description: "Sendero de alta montaña con frailejones.",
+    image: "https://images.unsplash.com/photo-1493244040629-496f6d136cc3?w=800&h=600&fit=crop",
+    category: "hiking",
+    availability: "limited",
+    rating: 4.8,
+    location: "Murillo, Tolima",
+    fullDescription: "Ideal para ecoturismo y fotografía.",
+    history: "Parte del ecosistema andino protegido.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "cerro-panamericano",
+    name: "Cerro Panamericano",
+    description: "Sendero urbano de alta pendiente.",
+    image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?w=800&h=600&fit=crop",
+    category: "hiking",
+    availability: "available",
+    rating: 4.4,
+    location: "Ibagué, Tolima",
+    fullDescription: "Punto de encuentro de deportistas.",
+    history: "Ruta preferida para entrenamientos de alto rendimiento.",
+    reviews: [],
+    gallery: [],
+  },
+  {
+    id: "cascada-eden",
+    name: "Cascada del Edén",
+    description: "Caída de agua de 70 metros rodeada de selva.",
+    image: "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=800&h=600&fit=crop",
+    category: "hiking",
+    availability: "available",
+    rating: 4.9,
+    location: "Chaparral, Tolima",
+    fullDescription: "Un espectáculo natural imperdible.",
+    history: "Considerada mística por comunidades indígenas.",
+    reviews: [],
+    gallery: [],
+  },
 ];
 
+// ---------------------------
+// 3. Helpers
+// ---------------------------
 export const getPlacesByCategory = (category: string): Place[] => {
-  return places.filter(place => place.category === category);
+  return places.filter((place) => place.category === category);
 };
 
 export const getPlaceById = (id: string): Place | undefined => {
-  return places.find(place => place.id === id);
+  return places.find((place) => place.id === id);
 };

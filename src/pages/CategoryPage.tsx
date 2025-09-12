@@ -1,17 +1,15 @@
 import { useParams } from 'react-router-dom';
-import { useLanguage } from '@/contexts/LanguageContext';
 import PlaceCard from '@/components/PlaceCard';
 import { getPlacesByCategory } from '@/data/places';
-import { Calendar, Mountain, UtensilsCrossed, Building, Waves } from 'lucide-react';
+import { Calendar, Mountain, UtensilsCrossed } from 'lucide-react';
 
 const CategoryPage = () => {
   const { category } = useParams<{ category: string }>();
-  const { t } = useLanguage();
-  
+
   if (!category) return <div>Category not found</div>;
-  
+
   const places = getPlacesByCategory(category);
-  
+
   const getCategoryIcon = () => {
     switch (category) {
       case 'festivals':
@@ -20,22 +18,34 @@ const CategoryPage = () => {
         return Mountain;
       case 'gastronomy':
         return UtensilsCrossed;
+      default:
+        return Mountain;
     }
   };
 
   const getCategoryTitle = () => {
-    return t(`category.${category}.title`);
+    switch (category) {
+      case 'festivals': return "Fiestas";
+      case 'hiking': return "Senderismo";
+      case 'gastronomy': return "Gastronomía";
+      default: return "Categoría";
+    }
   };
 
   const getCategoryDescription = () => {
-    return t(`category.${category}.description`);
+    switch (category) {
+      case 'festivals': return "Celebra las tradiciones y cultura del Tolima.";
+      case 'hiking': return "Explora montañas, volcanes y senderos mágicos.";
+      case 'gastronomy': return "Disfruta la comida típica tolimense.";
+      default: return "Descubre lo mejor del Tolima.";
+    }
   };
 
   const IconComponent = getCategoryIcon();
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header Section */}
+      {/* Encabezado */}
       <section className="bg-gradient-nature py-16">
         <div className="container mx-auto px-4">
           <div className="text-center text-primary-foreground">
@@ -50,7 +60,7 @@ const CategoryPage = () => {
         </div>
       </section>
 
-      {/* Places Grid */}
+      {/* Lugares */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           {places.length > 0 ? (
