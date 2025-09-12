@@ -9,6 +9,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useAuth } from '@/contexts/AuthContext';
 import { toast } from '@/hooks/use-toast';
 import { Loader2, User, Building } from 'lucide-react';
+import LoginWithGoogle from "../LoginWithGoogle";
+
+
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -132,7 +135,7 @@ const Auth = () => {
       setLoading(false);
     }
   };
-
+ const [tab, setTab] = useState("login");
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 p-4">
       <div className="w-full max-w-md">
@@ -142,10 +145,12 @@ const Auth = () => {
         </div>
 
         <Card className="shadow-medium border-border">
-          <Tabs defaultValue="login" className="w-full">
+          <Tabs value={tab} onValueChange={setTab} className="w-full">
+
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="login">Iniciar Sesión</TabsTrigger>
               <TabsTrigger value="register">Registrarse</TabsTrigger>
+              
             </TabsList>
             
             <TabsContent value="login">
@@ -189,6 +194,10 @@ const Auth = () => {
                       'Iniciar Sesión'
                     )}
                   </Button>
+                  <div className="mt-4">
+                    <p className="text-center text-sm text-gray-500 mb-2">o continúa con</p>
+                    <LoginWithGoogle />
+  </div>
                 </form>
               </CardContent>
             </TabsContent>
@@ -271,7 +280,12 @@ const Auth = () => {
                     ) : (
                       'Crear Cuenta'
                     )}
+                    
                   </Button>
+                  <div className="mt-4">
+                    <p className="text-center text-sm text-gray-500 mb-2">o continúa con</p>
+                      <LoginWithGoogle />
+                  </div>
                 </form>
               </CardContent>
             </TabsContent>

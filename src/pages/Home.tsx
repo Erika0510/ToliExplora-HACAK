@@ -159,7 +159,7 @@ const Home = () => {
             ¿Listo para tu próxima aventura?
           </h2>
           <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-            Descubre lugares únicos, vive experiencias auténticas y crea recuerdos inolvidables en el corazón de Colombia.
+            Descubre lugares únicos, vive experiencias auténticSas y crea recuerdos inolvidables en el corazón de Colombia.
           </p>
           <Button variant="accent" size="lg" className="text-lg px-8">
             Comenzar exploración
