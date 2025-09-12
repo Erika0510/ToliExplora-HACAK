@@ -1,58 +1,83 @@
 import { useState } from "react";
 import { supabase } from "./supabaseClient";
-import LoginWithGoogle from "./LoginWithGoogle"; // 👈 aquí importamos
 
-function Login() {
+function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("tourist");
   const [message, setMessage] = useState("");
 
-  const handleLogin = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
-    const { data, error } = await supabase.auth.signInWithPassword({
+    // Crear usuario en Supabase Auth
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
     });
 
     if (error) {
       setMessage(error.message);
+      return;
+    }
+
+    // ⚠️ Validar que el usuario se haya creado
+    const user = data?.user;
+    if (!user) {
+      setMessage("Error al crear el usuario ❌");
+      return;
+    }
+
+    // Guardar perfil en tabla 'profiles'
+    const { error: profileError } = await supabase.from("profiles").insert([
+      {
+        id: user.id, // 👈 ahora seguro
+        full_name: email.split("@")[0],
+        role,
+      },
+    ]);
+
+    if (profileError) {
+      setMessage("Error al guardar perfil: " + profileError.message);
     } else {
-      setMessage("Bienvenido 👋");
+      setMessage("✅ Registro exitoso 🎉");
     }
   };
 
   return (
-    <div className="p-4 max-w-sm mx-auto">
-      <form onSubmit={handleLogin}>
-        <h2 className="text-xl mb-2 font-bold">Iniciar Sesión</h2>
-        <input
-          type="email"
-          placeholder="Correo"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="border p-2 w-full mb-2"
-        />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="border p-2 w-full mb-2"
-        />
-        <button type="submit" className="bg-green-600 text-white p-2 w-full rounded">
-          Iniciar Sesión
-        </button>
-        <p className="mt-2 text-sm">{message}</p>
-      </form>
-
-      {/* 👇 Aquí añadimos Google */}
-      <div className="mt-4">
-        <p className="text-center text-sm text-gray-500 mb-2">o continúa con</p>
-        <LoginWithGoogle />
-      </div>
-    </div>
+    <form onSubmit={handleRegister} className="p-4 max-w-sm mx-auto">
+      <h2 className="text-xl mb-2 font-bold">Registrarse</h2>
+      <input
+        type="email"
+        placeholder="Correo"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className="border p-2 w-full mb-2"
+      />
+      <input
+        type="password"
+        placeholder="Contraseña"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        className="border p-2 w-full mb-2"
+      />
+      <select
+        value={role}
+        onChange={(e) => setRole(e.target.value)}
+        className="border p-2 w-full mb-2"
+      >
+        <option value="tourist">Turista</option>
+        <option value="business">Empresario</option>
+      </select>
+      <button
+        type="submit"
+        className="bg-green-600 text-white p-2 w-full rounded"
+      >
+        Registrarse
+      </button>
+      <p className="mt-2 text-sm">{message}</p>
+    </form>
   );
 }
 
-export default Login;
+export default Register;

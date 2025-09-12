@@ -145,8 +145,7 @@ const Auth = () => {
         </div>
 
         <Card className="shadow-medium border-border">
-          <Tabs value={tab} onValueChange={setTab} className="w-full">
-
+          <Tabs value={tab} onValueChange={(value) => setTab(value)} className="w-full">
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="login">Iniciar Sesión</TabsTrigger>
               <TabsTrigger value="register">Registrarse</TabsTrigger>
