@@ -9,14 +9,19 @@ import hikingCard from '@/assets/hiking-card.jpg';
 import gastronomyCard from '@/assets/gastronomy-card.jpg';
 import townsCard from '@/assets/towns-card.jpg';
 import waterfallsCard from '@/assets/waterfalls-card.jpg';
+import carrusel1 from "@/assets/carrusel1.png";
+import carrusel2 from "@/assets/carrusel2.png";
+import carrusel3 from "@/assets/carrusel3.png";
+import carrusel4 from "@/assets/carrusel4.png";
+import carrusel5 from "@/assets/carrusel5.png";
 
 // Carrusel: imágenes para el hero
 const TOLIMA_IMAGES = [
-  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+  carrusel1,
+  carrusel2,
+  carrusel3,
+  carrusel4,
+  carrusel5
 ];
 
 const Home = () => {
@@ -61,7 +66,7 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Carrusel Hero */}
-      <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Fondo dinámico */}
         <div className="absolute inset-0">
           {TOLIMA_IMAGES.map((image, index) => (

@@ -23,8 +23,7 @@ const Header = () => {
     { href: '/festivals', label: t('nav.festivals') },
     { href: '/hiking', label: t('nav.hiking') },
     { href: '/gastronomy', label: t('nav.gastronomy') },
-    { href: '/towns', label: t('nav.towns') },
-    { href: '/waterfalls', label: t('nav.waterfalls') },
+   
   ];
 
   const toggleLanguage = () => {
