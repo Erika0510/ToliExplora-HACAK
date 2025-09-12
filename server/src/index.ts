@@ -90,6 +90,7 @@ app.post("/api/search", async (req, res) => {
     res.status(500).json({ error: "Error al buscar lugares" });
   }
 });
+app.get("/health", (_req, res) => res.status(200).send("ok"));
 
 app.listen(4000, () => {
   console.log("✅ Backend corriendo en http://localhost:4000");
