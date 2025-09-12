@@ -4,17 +4,13 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-<<<<<<< HEAD
-      "@/*": ["../src/*"]
-=======
-      "@/*": ["./src/*"]
->>>>>>> 34ff906453843f78100a6a0a1271c6cf73441c9e
+      "@/": ["./src/"]
     },
     "noImplicitAny": false,
     "noUnusedParameters": false,
     "skipLibCheck": true,
     "allowJs": true,
     "noUnusedLocals": false,
-    "strictNullChecks": false
-  }
+    "strictNullChecks":false
+}
 }
