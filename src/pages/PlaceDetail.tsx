@@ -272,47 +272,11 @@ const PlaceDetail = () => {
             {/* Sidebar */}
             <div className="space-y-6">
               {/* Booking Card */}
-              <Card className="bg-gradient-card border-border shadow-medium sticky top-8">
-                <CardHeader>
-                  <CardTitle className="text-primary">Información</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-muted-foreground">Estado:</span>
-                    <Badge className={getAvailabilityColor()}>
-                      {getAvailabilityText()}
-                    </Badge>
-                  </div>
-                  
-                  <div className="flex items-center justify-between">
-                    <span className="text-muted-foreground">Ubicación:</span>
-                    <span className="text-foreground text-sm">{place.location}</span>
-                  </div>
-                  
-                  {averageRating > 0 && (
-                    <div className="flex items-center justify-between">
-                      <span className="text-muted-foreground">Calificación:</span>
-                      <div className="flex items-center space-x-1">
-                        <Star className="h-4 w-4 fill-accent text-accent" />
-                        <span className="text-foreground">{averageRating.toFixed(1)}</span>
-                      </div>
-                    </div>
-                  )}
-                  
-                  <Separator />
-                  
-                  {place.availability === 'available' && (
-                    <Button variant="nature" className="w-full" size="lg">
-                      {t('common.book_now')}
-                    </Button>
-                  )}
-                  
-                  <Button variant="outline" className="w-full">
-                    <MapPin className="mr-2 h-4 w-4" />
-                    Ver en mapa
-                  </Button>
-                </CardContent>
-              </Card>
+             
+                
+         
+                 
+  
 
               {/* Quick Facts */}
               <Card className="bg-gradient-card border-border shadow-soft">

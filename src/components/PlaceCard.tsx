@@ -85,11 +85,8 @@ const PlaceCard = ({ id, name, description, image, availability, rating, locatio
             {t('common.read_more')}
           </Button>
         </Link>
-        {availability === 'available' && (
-          <Button variant="nature" size="sm">
-            {t('common.book_now')}
-          </Button>
-        )}
+       
+       
       </CardFooter>
     </Card>
   );
