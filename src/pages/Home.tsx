@@ -103,12 +103,7 @@ const Home = () => {
           <SearchBar />
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-            <Button variant="hero" size="lg" className="text-lg px-8">
-              {t('home.explore')}
-            </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 bg-background/20 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-primary">
-              {t('common.read_more')}
-            </Button>
+            
           </div>
 
           {/* Indicadores del carrusel */}
