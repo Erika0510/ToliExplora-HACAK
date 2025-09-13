@@ -12,33 +12,13 @@ import PlaceDetail from "./pages/PlaceDetail";
 import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
 import BusinessDashboard from "./pages/BusinessDashboard";
-import { useEffect } from "react";
 import Gamification from "./pages/Gamification";
-
-// 👇 Importamos la nueva página del buscador inteligente
-import Search from "./pages/Search";
+import Search from "./pages/Search"; // ✅ buscador inteligente
 
 const queryClient = new QueryClient();
 
 const AuthenticatedApp = () => {
   const { user, profile, loading } = useAuth();
-
-  useEffect(() => {
-    if (!loading && user && profile) {
-      // Redirección según tipo de usuario
-      if (
-        profile.user_type === "Empresario" &&
-        window.location.pathname === "/"
-      ) {
-        window.location.href = "/business";
-      } else if (
-        profile.user_type === "Turista" &&
-        window.location.pathname === "/business"
-      ) {
-        window.location.href = "/";
-      }
-    }
-  }, [user, profile, loading]);
 
   if (loading) {
     return (
@@ -52,30 +32,40 @@ const AuthenticatedApp = () => {
     <BrowserRouter>
       <Header />
       <Routes>
+        {/* 🔑 Ruta de login */}
         <Route
           path="/auth"
           element={!user ? <Auth /> : <Navigate to="/" replace />}
         />
+
+        {/* 🔑 Si es empresario, puede entrar a su dashboard */}
         <Route
           path="/business"
           element={
             user && profile?.user_type === "Empresario" ? (
               <BusinessDashboard />
             ) : (
-              <Navigate to="/auth" replace />
+              <Navigate to="/" replace />
             )
           }
         />
-        <Route path="/" element={<Home />} />
+
+        {/* 🔑 Página principal, pero si es empresario, lo manda directo a /business */}
+        <Route
+          path="/"
+          element={
+            user && profile?.user_type === "Empresario" ? (
+              <Navigate to="/business" replace />
+            ) : (
+              <Home />
+            )
+          }
+        />
+
         <Route path="/gamification" element={<Gamification />} />
-
-        {/* ✅ Nueva ruta para el buscador inteligente */}
-        <Route path="/search" element={<Search />} />
-
-        {/* ✅ Rutas dinámicas para categorías */}
+        <Route path="/search" element={<Search />} /> {/* ✅ Buscador */}
         <Route path="/:category" element={<CategoryPage />} />
         <Route path="/:category/:id" element={<PlaceDetail />} />
-
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
@@ -97,4 +87,5 @@ const App = () => (
 );
 
 export default App;
+
 
