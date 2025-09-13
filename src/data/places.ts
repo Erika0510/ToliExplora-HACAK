@@ -26,17 +26,51 @@ export interface Review {
 }
 
 // ---------------------------
-// 2. Lugares con imágenes únicas
+// 2. Importar imágenes locales
+// ---------------------------
+import festivalFolclorito from "@/assets/festivalfolclorito.avif";
+import lechonaImg from "@/assets/lechona.png";
+import feriaCafeImg from "@/assets/feria-cafe.png";
+import magdalenaImg from "@/assets/magdalena.png";
+import bambucoImg from "@/assets/banbuco.webp";
+import sanjuanImg from "@/assets/sanpedro.png";
+import sanpedroImg from "@/assets/Fiestas san pedro.jpg";
+import cantoImg from "@/assets/canto.png";
+import jazzImg from "@/assets/jazz.png";
+import artesaniaImg from "@/assets/artesania.jpg";
+
+import tamalImg from "@/assets/tamal.jpg";
+import cafetoliImg from "@/assets/cafetoli.png";
+import achirasImg from "@/assets/achiras.png";
+import mazamorraImg from "@/assets/mazamorra.png";
+import empanadasImg from "@/assets/empanadas.png";
+import arepasImg from "@/assets/arepas.png";
+import pescadoImg from "@/assets/pescado.png";
+import aguapanelaImg from "@/assets/aguapanela.png";
+import chichaImg from "@/assets/chicha.png";
+
+import nevadoImg from "@/assets/nevado.png";
+import combeimaImg from "@/assets/cañón del combeima.png";
+import cerroImg from "@/assets/cerro-machin.png";
+import lagunaImg from "@/assets/laguna-otun.png";
+import lineaImg from "@/assets/lalinea.jpg";
+import miradorImg from "@/assets/mirador-bella-vista.png";
+import silencioImg from "@/assets/silencio.png";
+import letrasImg from "@/assets/letras.png";
+import edenImg from "@/assets/eden.jpg";
+
+// ---------------------------
+// 3. Lugares con imágenes únicas
 // ---------------------------
 export const places: Place[] = [
   // ---------------------------
-  // FESTIVALES (10)
+  // FESTIVALES
   // ---------------------------
   {
     id: "festival-folclorico",
     name: "Festival Folclórico Colombiano",
     description: "La celebración más grande de música y danza tradicional en Ibagué.",
-    image: "src/assets/festivalfolclorito.avif",
+    image: festivalFolclorito,
     category: "festivals",
     availability: "available",
     rating: 4.9,
@@ -50,7 +84,7 @@ export const places: Place[] = [
     id: "festival-lechona",
     name: "Festival de la Lechona",
     description: "Homenaje al plato más representativo del Tolima.",
-    image: "src/assets/lechona.png",
+    image: lechonaImg,
     category: "festivals",
     availability: "available",
     rating: 4.7,
@@ -64,7 +98,7 @@ export const places: Place[] = [
     id: "feria-cafe",
     name: "Feria Nacional del Café",
     description: "Celebración del café tolimense con concursos y catas.",
-    image: "src/assets/feria-cafe.png",
+    image: feriaCafeImg,
     category: "festivals",
     availability: "available",
     rating: 4.8,
@@ -78,7 +112,7 @@ export const places: Place[] = [
     id: "carnaval-magd",
     name: "Carnaval del Río Magdalena",
     description: "Fiesta fluvial en Honda en honor al río.",
-    image: "src/assets/magdalena.png",
+    image: magdalenaImg,
     category: "festivals",
     availability: "available",
     rating: 4.5,
@@ -92,7 +126,7 @@ export const places: Place[] = [
     id: "festival-bambuco",
     name: "Encuentro Nacional de Bambuco",
     description: "Competencia de música tradicional andina.",
-    image: "src/assets/banbuco.webp",
+    image: bambucoImg,
     category: "festivals",
     availability: "available",
     rating: 4.6,
@@ -106,7 +140,7 @@ export const places: Place[] = [
     id: "festival-sanjuan",
     name: "Fiestas de San Juan",
     description: "Tradición tolimense con cabalgatas y desfiles.",
-    image: "src/assets/sanpedro.png",
+    image: sanjuanImg,
     category: "festivals",
     availability: "available",
     rating: 4.8,
@@ -120,7 +154,7 @@ export const places: Place[] = [
     id: "festival-sampedro",
     name: "Fiestas de San Pedro",
     description: "Danzas y comparsas en municipios del Tolima.",
-    image: "src/assets/Fiestas san pedro.jpg",
+    image: sanpedroImg,
     category: "festivals",
     availability: "available",
     rating: 4.7,
@@ -134,7 +168,7 @@ export const places: Place[] = [
     id: "festival-musical",
     name: "Festival de Música Colombiana",
     description: "Concurso Nacional de Duetos Príncipes de la Canción.",
-    image: "src/assets/canto.png",
+    image: cantoImg,
     category: "festivals",
     availability: "available",
     rating: 4.9,
@@ -148,7 +182,7 @@ export const places: Place[] = [
     id: "festival-jazz",
     name: "Festival de Jazz",
     description: "Espacio para los amantes del jazz y fusión musical.",
-    image: "src/assets/jazz.png",
+    image: jazzImg,
     category: "festivals",
     availability: "available",
     rating: 4.5,
@@ -162,7 +196,7 @@ export const places: Place[] = [
     id: "festival-feria-artesanal",
     name: "Feria Artesanal del Tolima",
     description: "Exposición y venta de artesanías típicas.",
-    image: "src/assets/artesania.jpg",
+    image: artesaniaImg,
     category: "festivals",
     availability: "available",
     rating: 4.3,
@@ -174,13 +208,13 @@ export const places: Place[] = [
   },
 
   // ---------------------------
-  // GASTRONOMÍA (10)
+  // GASTRONOMÍA
   // ---------------------------
   {
     id: "lechona",
     name: "Lechona Tolimense",
     description: "El plato más emblemático del Tolima.",
-    image: "src/assets/lechona.png",
+    image: lechonaImg,
     category: "gastronomy",
     availability: "available",
     rating: 4.9,
@@ -194,7 +228,7 @@ export const places: Place[] = [
     id: "tamales",
     name: "Tamales Tolimenses",
     description: "Plato típico envuelto en hoja de plátano.",
-    image: "src/assets/tamal.jpg",
+    image: tamalImg,
     category: "gastronomy",
     availability: "available",
     rating: 4.8,
@@ -208,7 +242,7 @@ export const places: Place[] = [
     id: "cafe-memorias",
     name: "Café & Memorias",
     description: "Café boutique con ambiente cultural.",
-    image: "src/assets/cafetoli.png",
+    image: cafetoliImg,
     category: "gastronomy",
     availability: "available",
     rating: 4.7,
@@ -222,7 +256,7 @@ export const places: Place[] = [
     id: "achiras",
     name: "Achiras del Huila",
     description: "Galletas crujientes hechas con almidón de achira.",
-    image: "src/assets/achiras.png",
+    image: achirasImg,
     category: "gastronomy",
     availability: "available",
     rating: 4.6,
@@ -236,7 +270,7 @@ export const places: Place[] = [
     id: "mazamorra",
     name: "Mazamorra Tolimense",
     description: "Postre típico de maíz tierno y panela.",
-    image: "src/assets/mazamorra.png",
+    image: mazamorraImg,
     category: "gastronomy",
     availability: "available",
     rating: 4.5,
@@ -250,7 +284,7 @@ export const places: Place[] = [
     id: "empanadas",
     name: "Empanadas Tolimenses",
     description: "Empanadas de maíz rellenas de carne y arroz.",
-    image: "src/assets/empanadas.png",
+    image: empanadasImg,
     category: "gastronomy",
     availability: "available",
     rating: 4.8,
@@ -264,7 +298,7 @@ export const places: Place[] = [
     id: "arepas",
     name: "Arepas de Maíz Pelao",
     description: "Arepas tradicionales a la brasa.",
-    image: "src/assets/arepas.png",
+    image: arepasImg,
     category: "gastronomy",
     availability: "available",
     rating: 4.7,
@@ -278,7 +312,7 @@ export const places: Place[] = [
     id: "viudo",
     name: "Viudo de Pescado",
     description: "Plato típico con pescado de río y yuca.",
-    image: "src/assets/pescado.png",
+    image: pescadoImg,
     category: "gastronomy",
     availability: "available",
     rating: 4.6,
@@ -292,7 +326,7 @@ export const places: Place[] = [
     id: "aguapanela",
     name: "Aguapanela con Queso",
     description: "Infusión de panela acompañada de queso fresco.",
-    image: "src/assets/aguapanela.png",
+    image: aguapanelaImg,
     category: "gastronomy",
     availability: "available",
     rating: 4.9,
@@ -306,7 +340,7 @@ export const places: Place[] = [
     id: "chicha",
     name: "Chicha de Maíz",
     description: "Bebida fermentada de maíz.",
-    image: "src/assets/eden.jpg",
+    image: chichaImg,
     category: "gastronomy",
     availability: "available",
     rating: 4.4,
@@ -318,13 +352,13 @@ export const places: Place[] = [
   },
 
   // ---------------------------
-  // SENDERISMO (10)
+  // SENDERISMO
   // ---------------------------
   {
     id: "nevado-tolima",
-    name: " ",
+    name: "Nevado del Tolima",
     description: "Montaña majestuosa y nevada del Parque Nacional Los Nevados.",
-    image: "src/assets/nevado.png",
+    image: nevadoImg,
     category: "hiking",
     availability: "limited",
     rating: 4.9,
@@ -338,7 +372,7 @@ export const places: Place[] = [
     id: "canon-combeima",
     name: "Cañón del Combeima",
     description: "Valle rodeado de montañas y ríos cristalinos.",
-    image: "src/assets/Cañón del Combeima.png",
+    image: combeimaImg,
     category: "hiking",
     availability: "available",
     rating: 4.7,
@@ -352,7 +386,7 @@ export const places: Place[] = [
     id: "cerro-machin",
     name: "Cerro Machín",
     description: "Volcán dormido con rutas panorámicas.",
-    image: "src/assets/cerro-machin.png",
+    image: cerroImg,
     category: "hiking",
     availability: "available",
     rating: 4.6,
@@ -366,7 +400,7 @@ export const places: Place[] = [
     id: "laguna-otun",
     name: "Laguna del Otún",
     description: "Laguna cristalina rodeada de páramo.",
-    image: "src/assets/laguna-otun.png",
+    image: lagunaImg,
     category: "hiking",
     availability: "available",
     rating: 4.8,
@@ -380,7 +414,7 @@ export const places: Place[] = [
     id: "alto-linea",
     name: "Alto de la Línea",
     description: "Paso montañoso icónico de la cordillera.",
-    image: "src/assets/lalinea.jpg",
+    image: lineaImg,
     category: "hiking",
     availability: "available",
     rating: 4.5,
@@ -394,7 +428,7 @@ export const places: Place[] = [
     id: "mirador-bella-vista",
     name: "Mirador Bella Vista",
     description: "Sendero corto con vistas panorámicas de Ibagué.",
-    image: "src/assets/mirador-bella-vista.png",
+    image: miradorImg,
     category: "hiking",
     availability: "available",
     rating: 4.6,
@@ -408,7 +442,7 @@ export const places: Place[] = [
     id: "cascada-silencio",
     name: "Cascada El Silencio",
     description: "Cascada escondida en medio del bosque.",
-    image: "src/assets/silencio.png",
+    image: silencioImg,
     category: "hiking",
     availability: "available",
     rating: 4.7,
@@ -422,7 +456,7 @@ export const places: Place[] = [
     id: "paramo-letras",
     name: "Páramo de Letras",
     description: "Sendero de alta montaña con frailejones.",
-    image: "src/assets/letras.png",
+    image: letrasImg,
     category: "hiking",
     availability: "limited",
     rating: 4.8,
@@ -432,12 +466,11 @@ export const places: Place[] = [
     reviews: [],
     gallery: [],
   },
- 
   {
     id: "cascada-eden",
     name: "Cascada del Edén",
     description: "Caída de agua de 70 metros rodeada de selva.",
-    image: "src/assets/eden.jpg",
+    image: edenImg,
     category: "hiking",
     availability: "available",
     rating: 4.9,
@@ -450,7 +483,7 @@ export const places: Place[] = [
 ];
 
 // ---------------------------
-// 3. Helpers
+// 4. Helpers
 // ---------------------------
 export const getPlacesByCategory = (category: string): Place[] => {
   return places.filter((place) => place.category === category);
