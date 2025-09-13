@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import PlaceCard from '@/components/PlaceCard';
 import { getPlacesByCategory } from '@/data/places';
 import { Calendar, Mountain, UtensilsCrossed } from 'lucide-react';
-
+import { useLanguage } from '@/contexts/LanguageContext';
 const CategoryPage = () => {
   const { category } = useParams<{ category: string }>();
 

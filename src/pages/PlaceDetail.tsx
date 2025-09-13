@@ -7,6 +7,7 @@ import { Separator } from '@/components/ui/separator';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ReviewForm from '@/components/ReviewForm';
 import { getPlaceById } from '@/data/places';
+
 import { 
   MapPin, 
   Star, 

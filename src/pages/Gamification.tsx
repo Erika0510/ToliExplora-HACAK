@@ -332,45 +332,9 @@ const Gamification = () => {
             </Card>
 
             {/* Rewards Store */}
-            <Card className="bg-white border border-green-200 shadow-md mt-6">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-green-600">
-                  <Gift className="w-6 h-6" />
-                  Tienda de Recompensas
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between p-3 rounded-lg bg-gray-50 border border-gray-200">
-                    <div>
-                      <p className="font-medium text-sm">Avatar Exclusivo</p>
-                      <p className="text-xs text-gray-500">Marco dorado para tu perfil</p>
-                    </div>
-                    <Button size="sm" className="bg-yellow-400 hover:bg-yellow-500 text-white text-xs">
-                      500 💰
-                    </Button>
-                  </div>
-                  <div className="flex items-center justify-between p-3 rounded-lg bg-gray-50 border border-gray-200">
-                    <div>
-                      <p className="font-medium text-sm">Boost de XP</p>
-                      <p className="text-xs text-gray-500">2x XP por 24 horas</p>
-                    </div>
-                    <Button size="sm" className="bg-yellow-400 hover:bg-yellow-500 text-white text-xs">
-                      300 💰
-                    </Button>
-                  </div>
-                  <div className="flex items-center justify-between p-3 rounded-lg bg-gray-50 border border-gray-200">
-                    <div>
-                      <p className="font-medium text-sm">Título Especial</p>
-                      <p className="text-xs text-gray-500">"Explorador Legendario"</p>
-                    </div>
-                    <Button size="sm" className="bg-yellow-400 hover:bg-yellow-500 text-white text-xs">
-                      1000 💰
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            
+              
+           
           </div>
         </div>
       </div>
