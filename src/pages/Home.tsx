@@ -4,33 +4,21 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Calendar, MapPin, UtensilsCrossed, Mountain, Waves, Building } from 'lucide-react';
 import { useState, useEffect } from "react";
-<<<<<<< HEAD
+import { useSearch } from "@/hooks/useSearch";
+import SearchBar from "@/components/SearchBar";
+
+// ✅ Importando imágenes desde src/assets con alias
 import festivalCard from '@/assets/festival-card.jpg';
 import hikingCard from '@/assets/hiking-card.jpg';
 import gastronomyCard from '@/assets/gastronomy-card.jpg';
 import townsCard from '@/assets/towns-card.jpg';
 import waterfallsCard from '@/assets/waterfalls-card.jpg';
+
 import carrusel1 from "@/assets/carrusel1.png";
 import carrusel2 from "@/assets/carrusel2.png";
 import carrusel3 from "@/assets/carrusel3.png";
 import carrusel4 from "@/assets/carrusel4.png";
 import carrusel5 from "@/assets/carrusel5.png";
-import { useSearch } from "@/hooks/useSearch";
-import SearchBar from "@/components/SearchBar";
-
-
-=======
-import festivalCard from '../assets/festival-card.jpg';
-import hikingCard from '../assets/hiking-card.jpg';
-import gastronomyCard from '../assets/gastronomy-card.jpg';
-import townsCard from '../assets/towns-card.jpg';
-
-import carrusel1 from "../assets/carrusel1.png";
-import carrusel2 from "../assets/carrusel2.png";
-import carrusel3 from "../assets/carrusel3.png";
-import carrusel4 from "../assets/carrusel4.png";
-import carrusel5 from "../assets/carrusel5.png";
->>>>>>> d316b4b (nuevo)
 
 // Carrusel: imágenes para el hero
 const TOLIMA_IMAGES = [
@@ -40,35 +28,7 @@ const TOLIMA_IMAGES = [
   carrusel4,
   carrusel5
 ];
-<section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
-  <div 
-    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-    style={{ backgroundImage: `url(${tolimaHero})` }}
-  >
-    <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/60 to-transparent"></div>
-  </div>
-  
-  <div className="relative z-10 text-center text-primary-foreground max-w-4xl mx-auto px-4">
-    <h1 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg">
-      {t('home.title')}
-    </h1>
-    <p className="text-xl md:text-2xl mb-8 drop-shadow-md font-light">
-      {t('home.subtitle')}
-    </p>
 
-    {/* 🔍 Buscador inteligente */}
-    <SearchBar />
-    
-    <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-      <Button variant="hero" size="lg" className="text-lg px-8">
-        {t('home.explore')}
-      </Button>
-      <Button variant="outline" size="lg" className="text-lg px-8 bg-background/20 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-primary">
-        {t('common.read_more')}
-      </Button>
-    </div>
-  </div>
-</section>
 const Home = () => {
   const { t } = useLanguage();
   const [currentImage, setCurrentImage] = useState(0);
@@ -140,7 +100,15 @@ const Home = () => {
             {t('home.subtitle')}
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <SearchBar />
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
+            <Button variant="hero" size="lg" className="text-lg px-8">
+              {t('home.explore')}
+            </Button>
+            <Button variant="outline" size="lg" className="text-lg px-8 bg-background/20 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-primary">
+              {t('common.read_more')}
+            </Button>
           </div>
 
           {/* Indicadores del carrusel */}
@@ -160,7 +128,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Aquí sigue el resto de secciones */}
       {/* History Section */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
