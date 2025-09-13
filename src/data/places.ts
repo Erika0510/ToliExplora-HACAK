@@ -52,7 +52,7 @@ export const places: Place[] = [
     id: "festival-lechona",
     name: "Festival de la Lechona",
     description: "Homenaje al plato más representativo del Tolima.",
-    image: "/assets/lechona.png",
+    image: "public/assets/lechona.png",
     category: "festivals",
     availability: "available",
     rating: 4.7,
