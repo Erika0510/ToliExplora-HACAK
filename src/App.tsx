@@ -13,7 +13,7 @@ import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
 import BusinessDashboard from "./pages/BusinessDashboard";
 import { useEffect } from "react";
-
+import Gamification from "./pages/Gamification";
 
 const queryClient = new QueryClient();
 
@@ -50,9 +50,17 @@ const AuthenticatedApp = () => {
             : <Navigate to="/auth" replace />
         } />
         <Route path="/" element={<Home />} />
-        <Route path="/:category" element={<CategoryPage />} />
-
+        <Route path="/gamification" element={<Gamification />} />
+        <Route path="/festivals" element={<CategoryPage />} />
+        <Route path="/hiking" element={<CategoryPage />} />
+        <Route path="/gastronomy" element={<CategoryPage />} />
+        <Route path="/towns" element={<CategoryPage />} />
+        <Route path="/waterfalls" element={<CategoryPage />} />
         <Route path="/:category/:id" element={<PlaceDetail />} />
+
+        
+
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
