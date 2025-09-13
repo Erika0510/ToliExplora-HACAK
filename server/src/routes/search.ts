@@ -1,58 +1,42 @@
 import { Router } from "express";
-import { searchPlaces, getPlaceDetails } from "../services/places";
-import { summarizeReviews } from "../services/ai";
+// import { searchPlaces, getPlaceDetails } from "../services/places";  // 🔴 desactiva Google
+// import { summarizeReviews } from "../services/ai";                  // 🔴 desactiva IA si no tienes tokens
 
 const router = Router();
 
-// Endpoint: Buscar lugares y resumir reseñas con IA
+// Endpoint rápido de prueba
 router.post("/", async (req, res) => {
   const { query } = req.body;
 
-  try {
-    console.log("🟢 [Search] Query recibida:", query);
+  console.log("🔍 Query recibida:", query);
 
-    // 1. Buscar lugares en Google
-    const places = await searchPlaces(query);
-    console.log("🟡 [Search] Google Places devolvió:", places?.length, "resultados");
+  // Datos falsos para la demo
+  const fakeResults = [
+    {
+      id: "1",
+      name: "Nevado del Tolima",
+      address: "Parque Nacional Natural Los Nevados, Tolima",
+      rating: 4.8,
+      totalReviews: 120,
+      aiSummary: "Un lugar espectacular para hacer senderismo y disfrutar de la nieve.",
+      location: { lat: 4.656, lng: -75.33 },
+      photo:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Nevado_del_Tolima.jpg/320px-Nevado_del_Tolima.jpg",
+    },
+    {
+      id: "2",
+      name: "Cascada La Plata",
+      address: "Planadas, Tolima",
+      rating: 4.5,
+      totalReviews: 80,
+      aiSummary: "Una cascada impresionante rodeada de naturaleza.",
+      location: { lat: 3.2, lng: -75.5 },
+      photo:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Cascada.jpg/320px-Cascada.jpg",
+    },
+  ];
 
-    if (!places || places.length === 0) {
-      console.warn("⚠️ [Search] Google no devolvió resultados");
-      return res.json([]);
-    }
-
-    const top = places.slice(0, 3); // limitar resultados iniciales
-    console.log("🔵 [Search] Procesando top:", top.map((p: any) => p.name));
-
-    // 2. Obtener detalles + reseñas + resumen IA
-    const enriched = await Promise.all(
-      top.map(async (place: any) => {
-        const details = await getPlaceDetails(place.place_id);
-        console.log("📍 [Details] Obtenido:", details?.name);
-
-        const reviews = details.reviews?.map((r: any) => r.text) || [];
-        console.log("✍️ [Reviews] Cantidad reseñas:", reviews.length);
-
-        const aiSummary = await summarizeReviews(reviews);
-
-        return {
-          id: place.place_id,
-          name: details.name,
-          address: details.formatted_address,
-          rating: details.rating,
-          totalReviews: details.user_ratings_total,
-          aiSummary,
-          location: details.geometry?.location,
-        };
-      })
-    );
-
-    console.log("✅ [Search] Respuesta final:", enriched.length, "lugares");
-    res.json(enriched);
-  } catch (err) {
-    console.error("❌ Error en /api/search:", err);
-    res.status(500).json({ error: "Error en búsqueda" });
-  }
+  res.json(fakeResults);
 });
 
 export default router;
-
