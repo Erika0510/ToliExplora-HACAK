@@ -22,11 +22,11 @@ const AuthenticatedApp = () => {
 
   useEffect(() => {
     if (!loading && user && profile) {
-      // Redirect based on user type after login
-      if (profile.user_type === 'Empresario' && window.location.pathname === '/') {
-        window.location.href = '/business';
-      } else if (profile.user_type === 'Turista' && window.location.pathname === '/business') {
-        window.location.href = '/';
+      // Redirección según tipo de usuario
+      if (profile.user_type === "Empresario" && window.location.pathname === "/") {
+        window.location.href = "/business";
+      } else if (profile.user_type === "Turista" && window.location.pathname === "/business") {
+        window.location.href = "/";
       }
     }
   }, [user, profile, loading]);
@@ -43,23 +43,26 @@ const AuthenticatedApp = () => {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/auth" element={!user ? <Auth /> : <Navigate to="/" replace />} />
-        <Route path="/business" element={
-          user && profile?.user_type === 'Empresario' 
-            ? <BusinessDashboard /> 
-            : <Navigate to="/auth" replace />
-        } />
+        <Route
+          path="/auth"
+          element={!user ? <Auth /> : <Navigate to="/" replace />}
+        />
+        <Route
+          path="/business"
+          element={
+            user && profile?.user_type === "Empresario" ? (
+              <BusinessDashboard />
+            ) : (
+              <Navigate to="/auth" replace />
+            )
+          }
+        />
         <Route path="/" element={<Home />} />
         <Route path="/gamification" element={<Gamification />} />
-        <Route path="/festivals" element={<CategoryPage />} />
-        <Route path="/hiking" element={<CategoryPage />} />
-        <Route path="/gastronomy" element={<CategoryPage />} />
-        <Route path="/towns" element={<CategoryPage />} />
-        <Route path="/waterfalls" element={<CategoryPage />} />
+
+        {/* ✅ Rutas dinámicas para categorías */}
+        <Route path="/:category" element={<CategoryPage />} />
         <Route path="/:category/:id" element={<PlaceDetail />} />
-
-        
-
 
         <Route path="*" element={<NotFound />} />
       </Routes>
