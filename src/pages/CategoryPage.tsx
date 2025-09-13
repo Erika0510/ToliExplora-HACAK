@@ -47,13 +47,19 @@ const CategoryPage = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Encabezado */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-  <svg className="relative block w-full h-16 text-white" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1200 120">
-    <path d="M0,0V46.29c47.36,22,103.33,29.05,158,17..." className="fill-current"></path>
-  </svg>
-</div>
-
-      
+      <section className="bg-gradient-nature py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center text-primary-foreground">
+            <IconComponent className="h-16 w-16 mx-auto mb-4" />
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              {getCategoryTitle()}
+            </h1>
+            <p className="text-xl md:text-2xl max-w-2xl mx-auto opacity-90">
+              {getCategoryDescription()}
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Lugares */}
       <section className="py-16">
