@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Calendar, MapPin, UtensilsCrossed, Mountain, Waves, Building } from 'lucide-react';
 import { useState, useEffect } from "react";
+<<<<<<< HEAD
 import festivalCard from '@/assets/festival-card.jpg';
 import hikingCard from '@/assets/hiking-card.jpg';
 import gastronomyCard from '@/assets/gastronomy-card.jpg';
@@ -18,6 +19,18 @@ import { useSearch } from "@/hooks/useSearch";
 import SearchBar from "@/components/SearchBar";
 
 
+=======
+import festivalCard from '../assets/festival-card.jpg';
+import hikingCard from '../assets/hiking-card.jpg';
+import gastronomyCard from '../assets/gastronomy-card.jpg';
+import townsCard from '../assets/towns-card.jpg';
+
+import carrusel1 from "../assets/carrusel1.png";
+import carrusel2 from "../assets/carrusel2.png";
+import carrusel3 from "../assets/carrusel3.png";
+import carrusel4 from "../assets/carrusel4.png";
+import carrusel5 from "../assets/carrusel5.png";
+>>>>>>> d316b4b (nuevo)
 
 // Carrusel: imágenes para el hero
 const TOLIMA_IMAGES = [
