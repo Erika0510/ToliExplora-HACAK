@@ -22,7 +22,7 @@ const SearchBar = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="🔍 Buscar lugares turísticos..."
-          className="flex-1 px-4 py-3 text-lg border-none focus:outline-none"
+          className="w-full px-4 py-2 border rounded-md text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary"
         />
         <button
           onClick={handleSearch}
