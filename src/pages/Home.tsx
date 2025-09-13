@@ -14,6 +14,10 @@ import carrusel2 from "@/assets/carrusel2.png";
 import carrusel3 from "@/assets/carrusel3.png";
 import carrusel4 from "@/assets/carrusel4.png";
 import carrusel5 from "@/assets/carrusel5.png";
+import { useSearch } from "@/hooks/useSearch";
+import SearchBar from "@/components/SearchBar";
+
+
 
 // Carrusel: imágenes para el hero
 const TOLIMA_IMAGES = [
@@ -23,7 +27,35 @@ const TOLIMA_IMAGES = [
   carrusel4,
   carrusel5
 ];
+<section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+  <div 
+    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+    style={{ backgroundImage: `url(${tolimaHero})` }}
+  >
+    <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/60 to-transparent"></div>
+  </div>
+  
+  <div className="relative z-10 text-center text-primary-foreground max-w-4xl mx-auto px-4">
+    <h1 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg">
+      {t('home.title')}
+    </h1>
+    <p className="text-xl md:text-2xl mb-8 drop-shadow-md font-light">
+      {t('home.subtitle')}
+    </p>
 
+    {/* 🔍 Buscador inteligente */}
+    <SearchBar />
+    
+    <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
+      <Button variant="hero" size="lg" className="text-lg px-8">
+        {t('home.explore')}
+      </Button>
+      <Button variant="outline" size="lg" className="text-lg px-8 bg-background/20 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-primary">
+        {t('common.read_more')}
+      </Button>
+    </div>
+  </div>
+</section>
 const Home = () => {
   const { t } = useLanguage();
   const [currentImage, setCurrentImage] = useState(0);
