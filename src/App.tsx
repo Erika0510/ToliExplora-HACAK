@@ -15,6 +15,9 @@ import BusinessDashboard from "./pages/BusinessDashboard";
 import { useEffect } from "react";
 import Gamification from "./pages/Gamification";
 
+// 👇 Importamos la nueva página del buscador inteligente
+import Search from "./pages/Search";
+
 const queryClient = new QueryClient();
 
 const AuthenticatedApp = () => {
@@ -23,9 +26,15 @@ const AuthenticatedApp = () => {
   useEffect(() => {
     if (!loading && user && profile) {
       // Redirección según tipo de usuario
-      if (profile.user_type === "Empresario" && window.location.pathname === "/") {
+      if (
+        profile.user_type === "Empresario" &&
+        window.location.pathname === "/"
+      ) {
         window.location.href = "/business";
-      } else if (profile.user_type === "Turista" && window.location.pathname === "/business") {
+      } else if (
+        profile.user_type === "Turista" &&
+        window.location.pathname === "/business"
+      ) {
         window.location.href = "/";
       }
     }
@@ -60,6 +69,9 @@ const AuthenticatedApp = () => {
         <Route path="/" element={<Home />} />
         <Route path="/gamification" element={<Gamification />} />
 
+        {/* ✅ Nueva ruta para el buscador inteligente */}
+        <Route path="/search" element={<Search />} />
+
         {/* ✅ Rutas dinámicas para categorías */}
         <Route path="/:category" element={<CategoryPage />} />
         <Route path="/:category/:id" element={<PlaceDetail />} />
@@ -85,3 +97,4 @@ const App = () => (
 );
 
 export default App;
+
