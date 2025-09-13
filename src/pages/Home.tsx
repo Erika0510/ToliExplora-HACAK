@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { Button } from '../components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
+import { useLanguage } from '../contexts/LanguageContext';
 import { Calendar, MapPin, UtensilsCrossed, Mountain, Waves, Building } from 'lucide-react';
 import { useState, useEffect } from "react";
-import { useSearch } from "@/hooks/useSearch";
-import SearchBar from "@/components/SearchBar";
+import { useSearch } from "../hooks/useSearch";
+import SearchBar from '../components/SearchBar';
 
 // ✅ Importando imágenes desde src/assets con alias
 import festivalCard from '@/assets/festival-card.jpg';
