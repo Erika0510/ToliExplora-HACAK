@@ -22,6 +22,7 @@ const CategoryPage = () => {
         return Mountain;
     }
   };
+  
 
   const getCategoryTitle = () => {
     switch (category) {
